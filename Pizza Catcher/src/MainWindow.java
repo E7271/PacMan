@@ -12,6 +12,8 @@ public class MainWindow {
 
         // Create the "canvas" JPanel from MainGame
         GameCanvas canvas = new GameCanvas();
+        Characters Characters = new Characters();
+
 
         // Add the canvas as a JPanel to the window
         window.setContentPane(canvas);
@@ -25,39 +27,52 @@ public class MainWindow {
             switch (canvas.lastKey) {
 
                 case 1: //Right
-                    //Makes sure you don't go into walls
-                    if (canvas.grid[canvas.playerPositionY][canvas.playerPositionX + 1] != 0) {
-                        canvas.grid[canvas.playerPositionY][canvas.playerPositionX + 1] = 9;
-                        canvas.playerPositionX += 1;
+                    if (canvas.grid[Characters.playerPositionY][Characters.playerPositionX + 1] != 0) {
+                        canvas.grid[Characters.playerPositionY][Characters.playerPositionX + 1] = 9;
+                        Characters.playerPositionX += 1;
                         break;
                     }
+                    else{
+                        Characters.playerPositionX += 1;
+                    }
                 case 2: //Left
-                    //Makes sure you don't go into walls
-                    if (canvas.grid[canvas.playerPositionY][canvas.playerPositionX - 1] != 0) {
-                        canvas.grid[canvas.playerPositionY][canvas.playerPositionX - 1] = 9;
-                        canvas.playerPositionX -= 1;
+                    if (canvas.grid[Characters.playerPositionY][Characters.playerPositionX - 1] != 0) {
+                        canvas.grid[Characters.playerPositionY][Characters.playerPositionX - 1] = 9;
+                        Characters.playerPositionX -= 1;
+                        break;
+                    }
+                    else{
                         break;
                     }
                 case 3: //Up
-                    //Makes sure you don't go into walls
-                    if (canvas.grid[canvas.playerPositionY - 1][canvas.playerPositionX] != 0) {
-                        canvas.grid[canvas.playerPositionY - 1][canvas.playerPositionX] = 9;
-                        canvas.playerPositionY -= 1;
+                    if (canvas.grid[Characters.playerPositionY - 1][Characters.playerPositionX] != 0) {
+                        canvas.grid[Characters.playerPositionY - 1][Characters.playerPositionX] = 9;
+                        Characters.playerPositionY -= 1;
+                        break;
+                    }
+                    else{
                         break;
                     }
                 case 4: //Down
-                    //Makes sure you don't go into walls
-                    if (canvas.grid[canvas.playerPositionY + 1][canvas.playerPositionX] != 0) {
-                        canvas.grid[canvas.playerPositionY + 1][canvas.playerPositionX] = 9;
-                        canvas.playerPositionY += 1;
+                    if (canvas.grid[Characters.playerPositionY + 1][Characters.playerPositionX] != 0) {
+                        canvas.grid[Characters.playerPositionY + 1][Characters.playerPositionX] = 9;
+                        Characters.playerPositionY += 1;
                         break;
                     }
-                    break;
+                    else {
+                        break;
+                    }
             }
+
+
+
+
+
+            System.out.println(canvas.lastKey);
             canvas.repaint();
             // Add pause
             try {
-                Thread.sleep(10);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
