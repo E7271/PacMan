@@ -86,7 +86,7 @@ public class blockMover {
 
             while(true) {
 
-            //Pink Ghost
+                //Pink Ghost
                 //right
                 if (ghostDirection == 1){
                     //Makes sure ghost doesn't run isn't wall
@@ -122,18 +122,18 @@ public class blockMover {
                     //Makes sure ghost doesn't run isn't wall
                     if (gamePanel.grid[gamePanel.pinkGhostY + 1][gamePanel.pinkGhostX] != 0) {
                         gamePanel.pinkGhostY = gamePanel.pinkGhostY + 1;
-                        
+
                     }
                     break;
 
                 }
-                
+
                 break;
             }
 
 
 
-            
+
 
 
 
@@ -151,4 +151,3 @@ public class blockMover {
     }
 
 }
-

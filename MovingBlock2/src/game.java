@@ -166,7 +166,7 @@ public class game extends JPanel implements KeyListener {
 
         // Character
         g2player.setColor(Color.YELLOW);
-        //g2player.fillRect(gridPositionX * 20, gridPositionY * 20, boxWidth, boxHeight);
+        //g2player.fillRect(gridPositiongridPositionX * 20, gridPositionY * 20, boxWidth, boxHeight);
         g2player.fillRect((gridPositionX * 20) + 4, (gridPositionY * 20) + 4, 12, 12);
 
         //Ghosts
