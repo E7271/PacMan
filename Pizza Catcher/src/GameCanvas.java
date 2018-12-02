@@ -8,16 +8,11 @@ import java.awt.event.KeyListener;
  */
 public class GameCanvas extends JPanel implements KeyListener {
 
-    public int playerPositionX = 25 ;
-    public int playerPositionY = 1 ;
+    Characters Characters = new Characters();
 
-    public int playerWidth = 21;
-    public int playerHeight = 21;
 
-    int score = 1;
 
-    int lastKey = 4;
-/*
+    int lastKey = 2;
     int[][] grid = new int[][]{
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
@@ -36,8 +31,7 @@ public class GameCanvas extends JPanel implements KeyListener {
             { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
     };
-*/
-
+/*
     int[][] grid = new int[][]{
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
@@ -56,7 +50,7 @@ public class GameCanvas extends JPanel implements KeyListener {
             { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
     };
-
+*/
     public GameCanvas() {
         setBackground(Color.BLACK); // TODO may not work
         addKeyListener(this);
@@ -131,7 +125,7 @@ public class GameCanvas extends JPanel implements KeyListener {
 
 
                 g2d.setColor(Color.WHITE);
-                g2d.fillRect(((playerPositionX * 25) + 3), ((playerPositionY * 25) + 3), playerWidth, playerHeight);
+                g2d.fillRect(((Characters.playerPositionX * 25) + 3), ((Characters.playerPositionY * 25) + 3), Characters.playerWidth, Characters.playerHeight);
 
             }
         }
