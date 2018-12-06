@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.util.Arrays;
 
 /**
  * This class is where the program starts
@@ -23,63 +24,66 @@ public class MainWindow {
         window.setVisible(true);
         while (true) {
 
+
+            System.out.println(canvas.grid[1][1]);
+
             /***
              * This section is used for the AI to make it's moves
              */
+
+            int[] tails = new int[] {
+                    9,8,0
+            };
+
             switch (canvas.enemyKey) {
 
                 case 1:
-                    if(canvas.grid[canvas.Characters.enemyPositionY][canvas.Characters.enemyPositionX] == 9){
-                        System.out.println("Pink Wins");
+                    if(canvas.grid[canvas.Characters.enemyPositionY][canvas.Characters.enemyPositionX + 1] == 0 || canvas.grid[canvas.Characters.enemyPositionY][canvas.Characters.enemyPositionX + 1] == 8 || canvas.grid[canvas.Characters.enemyPositionY][canvas.Characters.enemyPositionX + 1] == 9) {
+                        System.out.println("It's a tie");
                         System.exit(0);
                     }
                     if (canvas.grid[canvas.Characters.enemyPositionY][canvas.Characters.enemyPositionX + 1] != 0) {
                         canvas.grid[canvas.Characters.enemyPositionY][canvas.Characters.enemyPositionX + 1] = 8;
                         canvas.Characters.enemyPositionX += 1;
-                        //System.out.println("This is working");
-
                         break;
                     }
                     else{
                         break;
                     }
                 case 2:
-                    if(canvas.grid[canvas.Characters.enemyPositionY][canvas.Characters.enemyPositionX] == 9){
-                        System.out.println("Pink Wins");
+                    if(canvas.grid[canvas.Characters.enemyPositionY][canvas.Characters.enemyPositionX - 1] == 0 || canvas.grid[canvas.Characters.enemyPositionY][canvas.Characters.enemyPositionX - 1] == 8 || canvas.grid[canvas.Characters.enemyPositionY][canvas.Characters.enemyPositionX - 1] == 9) {
+                        System.out.println("It's a tie");
                         System.exit(0);
                     }
                     if (canvas.grid[canvas.Characters.enemyPositionY][canvas.Characters.enemyPositionX - 1] != 0) {
                         canvas.grid[canvas.Characters.enemyPositionY][canvas.Characters.enemyPositionX - 1] = 8;
                         canvas.Characters.enemyPositionX -= 1;
-                        //System.out.println("This is working");
                         break;
                     }
                     else{
                         break;
                     }
                 case 3:
-                    if(canvas.grid[canvas.Characters.enemyPositionY][canvas.Characters.enemyPositionX] == 9){
-                        System.out.println("Pink Wins");
+                    if(canvas.grid[canvas.Characters.enemyPositionY - 1][canvas.Characters.enemyPositionX] == 0 || canvas.grid[canvas.Characters.enemyPositionY - 1][canvas.Characters.enemyPositionX] == 8 || canvas.grid[canvas.Characters.enemyPositionY - 1][canvas.Characters.enemyPositionX] == 9) {
+                        System.out.println("It's a tie");
                         System.exit(0);
                     }
                     if (canvas.grid[canvas.Characters.enemyPositionY - 1][canvas.Characters.enemyPositionX ] != 0) {
                         canvas.grid[canvas.Characters.enemyPositionY - 1][canvas.Characters.enemyPositionX] = 8;
                         canvas.Characters.enemyPositionY -= 1;
-                        //System.out.println("This is working");
                         break;
                     }
                     else{
                         break;
                     }
                 case 4:
-                    if(canvas.grid[canvas.Characters.enemyPositionY][canvas.Characters.enemyPositionX] == 9){
-                        System.out.println("Pink Wins");
+                    if(canvas.grid[canvas.Characters.enemyPositionY + 1][canvas.Characters.enemyPositionX] == 0 || canvas.grid[canvas.Characters.enemyPositionY + 1][canvas.Characters.enemyPositionX] == 8 || canvas.grid[canvas.Characters.enemyPositionY + 1][canvas.Characters.enemyPositionX] == 9) {
+                        System.out.println("It's a tie");
                         System.exit(0);
                     }
                     if (canvas.grid[canvas.Characters.enemyPositionY + 1][canvas.Characters.enemyPositionX ] != 0) {
                         canvas.grid[canvas.Characters.enemyPositionY + 1][canvas.Characters.enemyPositionX] = 8;
                         canvas.Characters.enemyPositionY += 1;
-                        //System.out.println("This is working");
                         break;
                     }
                     else{
@@ -94,10 +98,9 @@ public class MainWindow {
              * This Section is used to select the Players Option
              */
             switch (canvas.lastKey) {
-
                 case 1: //Right
-                    if(canvas.grid[canvas.Characters.playerPositionY][canvas.Characters.playerPositionX] == 8){
-                        System.out.println("Orange Wins");
+                    if(canvas.grid[canvas.Characters.playerPositionY][canvas.Characters.playerPositionX + 1] == 0 || canvas.grid[canvas.Characters.playerPositionY][canvas.Characters.playerPositionX  + 1] == 8 || canvas.grid[canvas.Characters.playerPositionY][canvas.Characters.playerPositionX + 1] == 9) {
+                        System.out.println("It's a tie");
                         System.exit(0);
                     }
                     if (canvas.grid[canvas.Characters.playerPositionY][canvas.Characters.playerPositionX + 1] != 0 && canvas.grid[canvas.Characters.playerPositionY][canvas.Characters.playerPositionX + 1] != 3) {
@@ -109,8 +112,8 @@ public class MainWindow {
                         break;
                     }
                 case 2: //Left
-                    if(canvas.grid[canvas.Characters.playerPositionY][canvas.Characters.playerPositionX] == 8){
-                        System.out.println("Orange Wins");
+                    if(canvas.grid[canvas.Characters.playerPositionY][canvas.Characters.playerPositionX - 1] == 0 || canvas.grid[canvas.Characters.playerPositionY][canvas.Characters.playerPositionX - 1] == 8 || canvas.grid[canvas.Characters.playerPositionY][canvas.Characters.playerPositionX - 1] == 9){
+                        System.out.println("It's a tie");
                         System.exit(0);
                     }
                     if (canvas.grid[canvas.Characters.playerPositionY][canvas.Characters.playerPositionX - 1] != 0 && canvas.grid[canvas.Characters.playerPositionY][canvas.Characters.playerPositionX - 1] != 3) {
@@ -122,8 +125,8 @@ public class MainWindow {
                         break;
                     }
                 case 3: //Up
-                    if(canvas.grid[canvas.Characters.playerPositionY][canvas.Characters.playerPositionX] == 8){
-                        System.out.println("Orange Wins");
+                    if(canvas.grid[canvas.Characters.playerPositionY - 1][canvas.Characters.playerPositionX] == 0 || canvas.grid[canvas.Characters.playerPositionY - 1][canvas.Characters.playerPositionX] == 8 || canvas.grid[canvas.Characters.playerPositionY - 1][canvas.Characters.playerPositionX] == 9) {
+                        System.out.println("It's a tie");
                         System.exit(0);
                     }
                     if (canvas.grid[canvas.Characters.playerPositionY - 1][canvas.Characters.playerPositionX] != 0 && canvas.grid[canvas.Characters.playerPositionY - 1][canvas.Characters.playerPositionX] != 3) {
@@ -135,8 +138,8 @@ public class MainWindow {
                         break;
                     }
                 case 4: //Down
-                    if(canvas.grid[canvas.Characters.playerPositionY][canvas.Characters.playerPositionX] == 8){
-                        System.out.println("Orange Wins");
+                    if(canvas.grid[canvas.Characters.playerPositionY + 1][canvas.Characters.playerPositionX] == 0 || canvas.grid[canvas.Characters.playerPositionY + 1][canvas.Characters.playerPositionX] == 8 || canvas.grid[canvas.Characters.playerPositionY + 1][canvas.Characters.playerPositionX] == 9) {
+                        System.out.println("It's a tie");
                         System.exit(0);
                     }
                     if (canvas.grid[canvas.Characters.playerPositionY + 1][canvas.Characters.playerPositionX] != 0 && canvas.grid[canvas.Characters.playerPositionY + 1][canvas.Characters.playerPositionX] != 3) {
@@ -148,16 +151,6 @@ public class MainWindow {
                         break;
                     }
             }
-
-
-
-
-
-
-
-
-
-
             canvas.repaint();
             // Add pause
             try {

@@ -8,16 +8,13 @@ import java.awt.event.KeyListener;
  */
 public class GameCanvas extends JPanel implements KeyListener {
 
-    public int playerPositionX = 25 ;
-    public int playerPositionY = 1 ;
+    Characters Characters = new Characters();
 
-    public int playerWidth = 21;
-    public int playerHeight = 21;
 
-    int score = 1;
 
-    int lastKey = 4;
-/*
+    int lastKey = 2;
+    int enemyKey = 1;
+
     int[][] grid = new int[][]{
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
@@ -36,13 +33,12 @@ public class GameCanvas extends JPanel implements KeyListener {
             { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
     };
-*/
-
+/*
     int[][] grid = new int[][]{
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,},
             { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
             { 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0},
-            { 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0},
+            { 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0},
             { 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0},
             { 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0},
             { 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 3, 3, 3, 3, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0},
@@ -51,12 +47,12 @@ public class GameCanvas extends JPanel implements KeyListener {
             { 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 3, 3, 3, 3, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0},
             { 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0},
             { 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0},
-            { 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0},
+            { 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0},
             { 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0},
             { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
     };
-
+*/
     public GameCanvas() {
         setBackground(Color.BLACK); // TODO may not work
         addKeyListener(this);
@@ -115,6 +111,19 @@ public class GameCanvas extends JPanel implements KeyListener {
                     g2d.fillRect(x_coords, y_coords, width, height);
                 }
 
+                if (grid[row][col] == 8) {
+                    g2d.setColor(Color.ORANGE);
+                    // Pixel coordinates
+                    int x_coords = 25 * col;
+                    int y_coords = 25 * row;
+
+                    // Block dimensions
+                    int width = 25;
+                    int height = 25;
+
+                    g2d.fillRect(x_coords, y_coords, width, height);
+                }
+
                 if (grid[row][col] == 9) {
                     g2d.setColor(Color.PINK);
                     // Pixel coordinates
@@ -131,7 +140,11 @@ public class GameCanvas extends JPanel implements KeyListener {
 
 
                 g2d.setColor(Color.WHITE);
-                g2d.fillRect(((playerPositionX * 25) + 3), ((playerPositionY * 25) + 3), playerWidth, playerHeight);
+                g2d.fillRect(((Characters.playerPositionX * 25) + 3), ((Characters.playerPositionY * 25) + 3), Characters.playerWidth, Characters.playerHeight);
+
+                g2d.setColor(Color.BLUE);
+                g2d.fillRect(((Characters.enemyPositionX * 25) +3), ((Characters.enemyPositionY * 25) + 3), Characters.enemyWidth, Characters.enemyHeight);
+
 
             }
         }
@@ -157,6 +170,27 @@ public class GameCanvas extends JPanel implements KeyListener {
             //Down
             case KeyEvent.VK_DOWN:
                 lastKey = 4;
+                break;
+        }
+
+        switch(e.getKeyCode()) {
+            //Right
+            case KeyEvent.VK_D:
+                enemyKey = 1;
+                break;
+
+            //Left
+            case KeyEvent.VK_A:
+                enemyKey = 2;
+                break;
+
+            //Up
+            case KeyEvent.VK_W:
+                enemyKey = 3;
+                break;
+            //Down
+            case KeyEvent.VK_S:
+                enemyKey = 4;
                 break;
         }
     }

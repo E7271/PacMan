@@ -1,6 +1,6 @@
 public class Characters {
 
-    public int playerPositionX = 25 ;
+    public int playerPositionX = 52 ;
     public int playerPositionY = 1 ;
 
     public int playerWidth = 21;
