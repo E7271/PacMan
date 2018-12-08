@@ -14,7 +14,6 @@ public class GameCanvas extends JPanel implements KeyListener {
 
     int lastKey = 10;
     int enemyKey = 10;
-
     int[][] grid = new int[][]{
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
@@ -105,8 +104,8 @@ public class GameCanvas extends JPanel implements KeyListener {
                 }
 
                 if (grid[row][col] == 8) {
-                    g2d.setColor(Color.ORANGE);
-                    // Pixel coordinates
+                    g2d.setColor(Color.RED);
+                    // Pixel coordinateswa
                     int x_coords = 25 * col;
                     int y_coords = 25 * row;
 
@@ -135,7 +134,7 @@ public class GameCanvas extends JPanel implements KeyListener {
                 g2d.setColor(Color.WHITE);
                 g2d.fillRect(((Characters.playerPositionX * 25) + 3), ((Characters.playerPositionY * 25) + 3), Characters.playerWidth, Characters.playerHeight);
 
-                g2d.setColor(Color.BLUE);
+                g2d.setColor(Color.RED);
                 g2d.fillRect(((Characters.enemyPositionX * 25) +3), ((Characters.enemyPositionY * 25) + 3), Characters.enemyWidth, Characters.enemyHeight);
 
 
