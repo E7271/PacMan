@@ -154,7 +154,7 @@ public class MainWindow {
             canvas.repaint();
             // Add pause
             try {
-                Thread.sleep(250);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

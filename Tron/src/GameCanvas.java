@@ -138,6 +138,8 @@ public class GameCanvas extends JPanel implements KeyListener {
                 g2d.fillRect(((Characters.enemyPositionX * 25) +3), ((Characters.enemyPositionY * 25) + 3), Characters.enemyWidth, Characters.enemyHeight);
 
 
+
+
             }
         }
 
