@@ -5,13 +5,6 @@ import java.awt.event.KeyListener;
 
 public class gameboard extends JPanel implements KeyListener {
 
-    //Yellow Character
-    public int playerOnePositionX = 11;
-    public int playerOnePositionY = 14;
-    public int playerOneWidth = 17;
-    public int playerOneHeight = 17;
-    public Color playerOneColor = new Color(254, 255, 194);
-
 
     public static int[][] connectFourBoard = new int[][]{
             //0 is out of bound
@@ -25,8 +18,7 @@ public class gameboard extends JPanel implements KeyListener {
             {0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0},
-            {9, 9, 9, 9, 9, 9, 9},
+            {2, 2, 2, 2, 2, 2, 2},
 
     };
 

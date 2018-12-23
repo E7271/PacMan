@@ -26,15 +26,32 @@ public class connectFour {
 
             int valueForPlayers = 2;
 
+            int playerTurn = 1;
 
-            for (int row = (playerOneChoice - 1); row <= 5; row += 1) {
-                if (gb.connectFourBoard[row][(playerOneChoice - 1)] == 1 || gb.connectFourBoard[row][(playerOneChoice - 1)] == 2) {
-                    gb.connectFourBoard[row - 1][(playerOneChoice - 1)] = valueForPlayers;
-                    System.out.println("Full Space");
-                    break;
+            if (playerTurn == 1) {
+                for (int row = (playerOneChoice - 1); row <= 5; row += 1) {
+                    if (gb.connectFourBoard[row][(playerOneChoice - 1)] == 1 || gb.connectFourBoard[row][(playerOneChoice - 1)] == 2) {
+                        gb.connectFourBoard[row - 1][(playerOneChoice - 1)] = 1;
+                        System.out.println("Full Space");
+                        playerTurn = 2;
+                        break;
+                    }
+                    if (gb.connectFourBoard[row][(playerOneChoice - 1)] == 0) {
+                        System.out.println("Blank Space");
+                    }
                 }
-                if (gb.connectFourBoard[row][(playerOneChoice - 1)] == 0) {
-                    System.out.println("Blank Space");
+            }
+            if (playerTurn == 2) {
+                for (int row = (playerOneChoice - 1); row <= 5; row += 1) {
+                    if (gb.connectFourBoard[row][(playerOneChoice - 1)] == 1 || gb.connectFourBoard[row][(playerOneChoice - 1)] == 2) {
+                        gb.connectFourBoard[row - 1][(playerOneChoice - 1)] = 2;
+                        System.out.println("Full Space");
+                        playerTurn = 1;
+                        break;
+                    }
+                    if (gb.connectFourBoard[row][(playerOneChoice - 1)] == 0) {
+                        System.out.println("Blank Space");
+                    }
                 }
             }
 
