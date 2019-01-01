@@ -7,18 +7,12 @@ public class gameboard extends JPanel implements KeyListener {
 
 
     public static int[][] connectFourBoard = new int[][]{
-            //0 is out of bound
-            //1 is path way
-            //2 is yellow, 6 is yellow circle
-            //3 is green, 7 is green circle
-            //4 is red, 8 is red circle
-            //5 is blue, 9 is blue circle
             {0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0},
-            {2, 2, 2, 2, 2, 2, 2},
+            {0, 0, 0, 0, 0, 0, 0},
 
     };
 
