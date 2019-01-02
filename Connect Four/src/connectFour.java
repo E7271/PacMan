@@ -47,10 +47,6 @@ public class connectFour {
                         System.out.println("Blank Space");
                     }
                 }
-
-
-
-
                 playerTurn = 3;
             }
             /*
