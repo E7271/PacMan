@@ -5,14 +5,20 @@ public class input {
     public static connectFour cF = new connectFour();
     public static gameboard gb = new gameboard();
 
+
+
     public static void winnerCheck() {
+
         if (playerCounterOne >= 4) {
             System.out.println("player one wins");
+            System.exit(0);
         }
         if (playerCounterTwo >= 4) {
             System.out.println("player two wins");
+            System.exit(0);
         }
     }
+
     public static void horizontalChecker() {
         int i;
         int y;
@@ -44,6 +50,7 @@ public class input {
             verticalChecker();
         }
     }
+
     public static void verticalChecker() {
         int i;
         int y;
@@ -72,23 +79,58 @@ public class input {
             }
         }
         if (playerCounterOne <= 4 || playerCounterTwo <= 4) {
-            //TODO add diagonalChecker();
-            diagonalChecker();
+            diagonalCheckerTopToBottom();
         }
     }
 
-    public static void diagonalChecker(){
-
-
-
-
-
+    public static void diagonalCheckerTopToBottom() {
+        int x;
+        int y;
+        for (y = 0; y != 3; y += 1) {
+            for (x = 0; x != 3; x += 1) {
+                if (gb.connectFourBoard[y][x] == 1 && gb.connectFourBoard[y + 1][x + 1] == 1 && gb.connectFourBoard[y + 2][x + 2] == 1 && gb.connectFourBoard[y + 3][x + 3] == 1) {
+                    playerCounterOne = 4;
+                    break;
+                }
+                if (gb.connectFourBoard[y][x] == 2 && gb.connectFourBoard[y + 1][x + 1] == 2 && gb.connectFourBoard[y + 2][x + 2] == 2 && gb.connectFourBoard[y + 3][x + 3] == 2) {
+                    playerCounterTwo = 4;
+                    break;
+                }
+                if (playerCounterOne >= 4 || playerCounterTwo >= 4) {
+                    winnerCheck();
+                }
+            }
+        }
+        if (playerCounterOne <= 4 || playerCounterTwo <= 4) {
+            diagonalCheckerBottomToTop();
+        }
     }
 
 
- public static void main(String[] args) {
- //System for checking which player wins, if any (checks each round)
- horizontalChecker();
- }
+    //TODO finish the diagonal, as it's not checking the entire thing
+    public static void diagonalCheckerBottomToTop() {
+        int x;
+        int y;
+        for (y = 0; y != 3; y += 1) {
+            for (x = 6; x != 3; x -= 1) {
+                if (gb.connectFourBoard[y][x] == 1 && gb.connectFourBoard[y + 1][x - 1] == 1 && gb.connectFourBoard[y + 2][x - 2] == 1 && gb.connectFourBoard[y + 3][x - 3] == 1) {
+                    playerCounterOne = 4;
+                    break;
+                }
+                if (gb.connectFourBoard[y][x] == 2 && gb.connectFourBoard[y + 1][x - 1] == 2 && gb.connectFourBoard[y + 2][x - 2] == 2 && gb.connectFourBoard[y + 3][x - 3] == 2) {
+                    playerCounterTwo = 4;
+                    break;
+                }
+                if (playerCounterOne >= 4 || playerCounterTwo >= 4) {
+                    winnerCheck();
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        //System for checking which player wins, if any (checks each round)
+        horizontalChecker();
+    }
 
 }
