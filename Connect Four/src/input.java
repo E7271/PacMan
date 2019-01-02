@@ -86,8 +86,8 @@ public class input {
     public static void diagonalCheckerTopToBottom() {
         int x;
         int y;
-        for (y = 0; y != 3; y += 1) {
-            for (x = 0; x != 3; x += 1) {
+        for (y = 0; y != 4; y += 1) {
+            for (x = 0; x != 4; x += 1) {
                 if (gb.connectFourBoard[y][x] == 1 && gb.connectFourBoard[y + 1][x + 1] == 1 && gb.connectFourBoard[y + 2][x + 2] == 1 && gb.connectFourBoard[y + 3][x + 3] == 1) {
                     playerCounterOne = 4;
                     break;
@@ -111,8 +111,8 @@ public class input {
     public static void diagonalCheckerBottomToTop() {
         int x;
         int y;
-        for (y = 0; y != 3; y += 1) {
-            for (x = 6; x != 3; x -= 1) {
+        for (y = 0; y != 4; y += 1) {
+            for (x = 6; x != 2; x -= 1) {
                 if (gb.connectFourBoard[y][x] == 1 && gb.connectFourBoard[y + 1][x - 1] == 1 && gb.connectFourBoard[y + 2][x - 2] == 1 && gb.connectFourBoard[y + 3][x - 3] == 1) {
                     playerCounterOne = 4;
                     break;
