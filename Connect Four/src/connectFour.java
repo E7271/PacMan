@@ -29,6 +29,10 @@ public class connectFour {
             This Section Deals with Player One Input
              */
             if (playerTurn == 1) {
+
+                //TODO connect to the input.java class so it can check and see if anyone has one
+                //TODO also make it so that all sections are place-able
+
                 for (int row = (playerChoice - 1); row <= 6; row += 1) {
                     if (gb.connectFourBoard[5][playerChoice - 1] == 0) {
                         gb.connectFourBoard[5][playerChoice - 1] = 1;
@@ -43,6 +47,10 @@ public class connectFour {
                         System.out.println("Blank Space");
                     }
                 }
+
+
+
+
                 playerTurn = 3;
             }
             /*
