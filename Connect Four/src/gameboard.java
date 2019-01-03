@@ -4,8 +4,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class gameboard extends JPanel implements KeyListener {
-
-
     public static int[][] connectFourBoard = new int[][]{
             {0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0},
@@ -16,22 +14,18 @@ public class gameboard extends JPanel implements KeyListener {
 
     };
 
-
     public gameboard() {
-        setBackground(Color.BLACK); // TODO may not work
+        setBackground(Color.BLACK);
         addKeyListener(this);
         setFocusable(true);
         setPreferredSize(new Dimension(175, 150));
-        setFocusTraversalKeysEnabled(false); // TODO see what this does
+        setFocusTraversalKeysEnabled(false);
 
     }
-
 
     public void paint(Graphics g) {
         super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
-        // TODO paint graphics here, using for loops
-
         for (int row = 0; row < connectFourBoard.length; row++) {
             for (int col = 0; col < connectFourBoard[row].length; col++) {
                 if (connectFourBoard[row][col] == 0) {
@@ -58,10 +52,7 @@ public class gameboard extends JPanel implements KeyListener {
                     g2d.fillRect(x_coords, y_coords, width, height);
                     g2d.setColor(Color.BLUE);
                     g2d.fillOval(x_coords + 2, y_coords + 2, width - 5, height - 5);
-
-
                 }
-
                 if (connectFourBoard[row][col] == 2) {
                     g2d.setColor(Color.YELLOW);
                     // Pixel coordinates
@@ -73,27 +64,9 @@ public class gameboard extends JPanel implements KeyListener {
                     g2d.fillRect(x_coords, y_coords, width, height);
                     g2d.setColor(Color.RED);
                     g2d.fillOval(x_coords + 2, y_coords + 2, width - 5, height - 5);
-
-
-                }
-                if (connectFourBoard[row][col] == 9) {
-                    g2d.setColor(Color.BLACK);
-                    // Pixel coordinates
-                    int x_coords = 25 * col;
-                    int y_coords = 25 * row;
-                    // Block dimensions
-                    int width = 25;
-                    int height = 25;
-                    g2d.fillRect(x_coords, y_coords, width, height);
-                    g2d.setColor(Color.BLACK);
-                    g2d.fillOval(x_coords + 2, y_coords + 2, width - 5, height - 5);
                 }
             }
-
-
         }
-
-
     }
 
     @Override
