@@ -54,6 +54,7 @@ public class connectFour {
                         gb.connectFourBoard[5][playerChoice - 1] = 2;
                         break;
                     }
+                    //TODO the line below this is the one that makes that weird diagonal thing, also make it so that there's a top limit
                     if (gb.connectFourBoard[row][(playerChoice - 1)] == 1 || gb.connectFourBoard[row][(playerChoice - 1)] == 2) {
                         gb.connectFourBoard[row - 1][(playerChoice - 1)] = 2;
                         break;
