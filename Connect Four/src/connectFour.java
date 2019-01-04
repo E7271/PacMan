@@ -3,14 +3,13 @@ import java.util.Scanner;
 
 public class connectFour {
     public static gameboard gb = new gameboard();
-    public static input input = new input();
     public static int playerTurn = 1;
     public static int playerCounterOne = 0;
     public static int playerCounterTwo = 0;
+    // Create the window to hold the game
+    public static JFrame window = new JFrame("Game");
 
     public static void main(String[] args) {
-        // Create the window to hold the game
-        JFrame window = new JFrame("Game");
         // Create the "canvas" JPanel from MainGame
         gameboard gameboard = new gameboard();
         // Add the canvas as a JPanel to the window
@@ -32,8 +31,13 @@ public class connectFour {
             Scanner in = new Scanner(System.in);
             System.out.println("Which column would you like to drop into" + playerName + "? ");
             int playerChoice = in.nextInt();
+            if (playerChoice > 7 || playerChoice < 1){
+                System.out.println("Please pick a valid option");
+                //main(null);
+            }
+
             if (playerTurn == 1) {
-                for (int row = (playerChoice - 1); row <= 6; row += 1) {
+                for (int row = 0; row <= 6; row += 1) {
                     if (gb.connectFourBoard[5][playerChoice - 1] == 0) {
                         gb.connectFourBoard[5][playerChoice - 1] = 1;
                         break;
@@ -49,12 +53,11 @@ public class connectFour {
                 playerTurn = 3;
             }
             if (playerTurn == 2) {
-                for (int row = (playerChoice - 1); row <= 6; row += 1) {
+                for (int row = 0; row <= 6; row += 1) {
                     if (gb.connectFourBoard[5][playerChoice - 1] == 0) {
                         gb.connectFourBoard[5][playerChoice - 1] = 2;
                         break;
                     }
-                    //TODO the line below this is the one that makes that weird diagonal thing, also make it so that there's a top limit
                     if (gb.connectFourBoard[row][(playerChoice - 1)] == 1 || gb.connectFourBoard[row][(playerChoice - 1)] == 2) {
                         gb.connectFourBoard[row - 1][(playerChoice - 1)] = 2;
                         break;
@@ -112,10 +115,10 @@ public class connectFour {
                 if (playerCounterOne >= 4 || playerCounterTwo >= 4) {
                     winnerCheck();
                 }
+                else{
+                    verticalChecker();
+                }
             }
-        }
-        if (playerCounterOne <= 4 || playerCounterTwo <= 4) {
-            verticalChecker();
         }
     }
 
@@ -144,10 +147,10 @@ public class connectFour {
                 if (playerCounterOne >= 4 || playerCounterTwo >= 4) {
                     winnerCheck();
                 }
+                else{
+                    diagonalCheckerTopToBottom();
+                }
             }
-        }
-        if (playerCounterOne <= 4 || playerCounterTwo <= 4) {
-            diagonalCheckerTopToBottom();
         }
     }
 
@@ -167,10 +170,10 @@ public class connectFour {
                 if (playerCounterOne >= 4 || playerCounterTwo >= 4) {
                     winnerCheck();
                 }
+                else{
+                    diagonalCheckerBottomToTop();
+                }
             }
-        }
-        if (playerCounterOne <= 4 || playerCounterTwo <= 4) {
-            diagonalCheckerBottomToTop();
         }
     }
 
@@ -189,6 +192,9 @@ public class connectFour {
                 }
                 if (playerCounterOne >= 4 || playerCounterTwo >= 4) {
                     winnerCheck();
+                }
+                else{
+                    break;
                 }
             }
         }
