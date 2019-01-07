@@ -13,14 +13,12 @@ public class connectFour {
         playerInput();
     }
 
-
     public static void playerInput() {
         gameboard gameboard = new gameboard();
         window.setContentPane(gameboard);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.pack();
         window.setVisible(true);
-
         while (true) {
             String playerName = " player one";
             if (playerTurn == 3) {
@@ -48,17 +46,13 @@ public class connectFour {
                     System.out.println("Please Enter a valid option");
                     playerInput();
             }
-
             int playerChoice = Integer.parseInt(input);
-
-
             if (playerTurn == 1) {
                 for (int row = 0; row <= 6; row += 1) {
                     if (gb.connectFourBoard[0][playerChoice - 1] == 1 || gb.connectFourBoard[0][playerChoice - 1] == 2) {
                         System.out.println("This column is full");
                         break;
                     }
-
 
                     if (gb.connectFourBoard[5][playerChoice - 1] == 0) {
                         gb.connectFourBoard[5][playerChoice - 1] = 1;
@@ -73,9 +67,7 @@ public class connectFour {
                     if (gb.connectFourBoard[row][(playerChoice - 1)] == 0) {
                     }
                 }
-
                 horizontalChecker();
-
             }
             if (playerTurn == 2) {
                 for (int row = 0; row <= 6; row += 1) {
@@ -102,8 +94,6 @@ public class connectFour {
                     horizontalChecker();
                 }
             }
-
-
         }
     }
 
@@ -119,8 +109,6 @@ public class connectFour {
             System.out.println(Arrays.deepToString(gameboard.connectFourBoard));
             System.exit(0);
         }
-
-
     }
 
     public static void horizontalChecker() {
@@ -215,6 +203,4 @@ public class connectFour {
         }
         playerInput();
     }
-
-
 }
