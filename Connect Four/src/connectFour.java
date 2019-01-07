@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class connectFour {
     public static gameboard gb = new gameboard();
-    public static input input = new input();
     public static int playerTurn = 1;
     public static int playerCounterOne = 0;
     public static int playerCounterTwo = 0;
@@ -182,7 +181,7 @@ public class connectFour {
 
     public static void diagonalCheckerBottomToTop() {
         for (int y = 0; y != 3; y++) {
-            for (int x = 6; x != 2; x--) {
+            for (int x = 6; x != 2; x -=1) {
                 System.out.println("Y:" + y + ", " + "X:" + x + " : for diagonalCheckerBottomToTop");
                 if (gb.connectFourBoard[y][x] == 1 && gb.connectFourBoard[y + 1][x - 1] == 1 && gb.connectFourBoard[y + 2][x - 2] == 1 && gb.connectFourBoard[y + 3][x - 3] == 1) {
                     playerCounterOne = 4;
@@ -193,7 +192,6 @@ public class connectFour {
                 if (playerCounterOne >= 4 || playerCounterTwo >= 4) {
                     winnerCheck();
                 }
-                break;
             }
         }
     }
