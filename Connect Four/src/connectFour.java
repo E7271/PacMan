@@ -33,37 +33,50 @@ public class connectFour {
             System.out.println("Which column would you like to drop into" + playerName + "? ");
             int playerChoice = in.nextInt();
             if (playerTurn == 1) {
-                for (int row = (playerChoice - 1); row <= 6; row += 1) {
+                for (int row = 0; row <= 6; row += 1) {
+                    if (gb.connectFourBoard[0][playerChoice-1] == 1 || gb.connectFourBoard[0][playerChoice-1] == 2){
+                        System.out.println("This column is full");
+                        break;
+                    }
+
+
                     if (gb.connectFourBoard[5][playerChoice - 1] == 0) {
                         gb.connectFourBoard[5][playerChoice - 1] = 1;
+                        playerTurn = 3;
                         break;
                     }
                     if (gb.connectFourBoard[row][(playerChoice - 1)] == 1 || gb.connectFourBoard[row][(playerChoice - 1)] == 2) {
                         gb.connectFourBoard[row - 1][(playerChoice - 1)] = 1;
+                        playerTurn = 3;
                         break;
                     }
                     if (gb.connectFourBoard[row][(playerChoice - 1)] == 0) {
                     }
                 }
                 horizontalChecker();
-                playerTurn = 3;
+
             }
             if (playerTurn == 2) {
-                for (int row = (playerChoice - 1); row <= 6; row += 1) {
-                    if (gb.connectFourBoard[5][playerChoice - 1] == 0) {
-                        gb.connectFourBoard[5][playerChoice - 1] = 2;
+                for (int row = 0; row <= 6; row += 1) {
+                    if (gb.connectFourBoard[0][playerChoice-1] == 1 || gb.connectFourBoard[0][playerChoice-1] == 2){
+                        System.out.println("This column is full");
                         break;
                     }
-                    //TODO the line below this is the one that makes that weird diagonal thing, also make it so that there's a top limit
+
+                    if (gb.connectFourBoard[5][playerChoice - 1] == 0) {
+                        gb.connectFourBoard[5][playerChoice - 1] = 2;
+                        playerTurn = 4;
+                        break;
+                    }
                     if (gb.connectFourBoard[row][(playerChoice - 1)] == 1 || gb.connectFourBoard[row][(playerChoice - 1)] == 2) {
                         gb.connectFourBoard[row - 1][(playerChoice - 1)] = 2;
+                        playerTurn = 4;
                         break;
                     }
                     if (gb.connectFourBoard[row][(playerChoice - 1)] == 0) {
                     }
                 }
                 horizontalChecker();
-                playerTurn = 4;
             }
             gameboard.repaint();
             // Add pause
