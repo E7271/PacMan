@@ -11,7 +11,6 @@ public class gameboard extends JPanel {
             {0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0},
-
     };
 
     public gameboard() {
@@ -20,8 +19,6 @@ public class gameboard extends JPanel {
         setPreferredSize(new Dimension(175, 150));
         setFocusTraversalKeysEnabled(false);
     }
-
-
 
     public void paint(Graphics g) {
         super.paint(g);
@@ -40,7 +37,6 @@ public class gameboard extends JPanel {
                     g2d.setColor(Color.BLACK);
                     g2d.fillOval(x_coords + 2, y_coords + 2, width - 5, height - 5);
                 }
-
                 if (connectFourBoard[row][col] == 1) {
                     g2d.setColor(Color.YELLOW);
                     // Pixel coordinates
