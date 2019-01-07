@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class gameboard extends JPanel implements KeyListener {
+public class gameboard extends JPanel {
     public static int[][] connectFourBoard = new int[][]{
             {0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0},
@@ -16,12 +16,12 @@ public class gameboard extends JPanel implements KeyListener {
 
     public gameboard() {
         setBackground(Color.BLACK);
-        addKeyListener(this);
         setFocusable(true);
         setPreferredSize(new Dimension(175, 150));
         setFocusTraversalKeysEnabled(false);
-
     }
+
+
 
     public void paint(Graphics g) {
         super.paint(g);
@@ -67,20 +67,5 @@ public class gameboard extends JPanel implements KeyListener {
                 }
             }
         }
-    }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-
     }
 }
