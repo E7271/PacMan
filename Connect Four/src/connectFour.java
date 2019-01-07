@@ -7,18 +7,20 @@ public class connectFour {
     public static int playerTurn = 1;
     public static int playerCounterOne = 0;
     public static int playerCounterTwo = 0;
+    public static JFrame window = new JFrame("Game");
 
     public static void main(String[] args) {
-        // Create the window to hold the game
-        JFrame window = new JFrame("Game");
-        // Create the "canvas" JPanel from MainGame
+        playerInput();
+    }
+
+
+    public static void playerInput() {
         gameboard gameboard = new gameboard();
-        // Add the canvas as a JPanel to the window
         window.setContentPane(gameboard);
-        // Finish setting up the window
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.pack();
         window.setVisible(true);
+
         while (true) {
             String playerName = " player one";
             if (playerTurn == 3) {
@@ -31,10 +33,28 @@ public class connectFour {
             }
             Scanner in = new Scanner(System.in);
             System.out.println("Which column would you like to drop into" + playerName + "? ");
-            int playerChoice = in.nextInt();
+            String input = in.nextLine();
+            switch (input) {
+                case ("1"):
+                case ("2"):
+                case ("3"):
+                case ("4"):
+                case ("5"):
+                case ("6"):
+                case ("7"):
+                    gameboard.repaint();
+                    break;
+                default:
+                    System.out.println("Please Enter a valid option");
+                    playerInput();
+            }
+
+            int playerChoice = Integer.parseInt(input);
+
+
             if (playerTurn == 1) {
                 for (int row = 0; row <= 6; row += 1) {
-                    if (gb.connectFourBoard[0][playerChoice-1] == 1 || gb.connectFourBoard[0][playerChoice-1] == 2){
+                    if (gb.connectFourBoard[0][playerChoice - 1] == 1 || gb.connectFourBoard[0][playerChoice - 1] == 2) {
                         System.out.println("This column is full");
                         break;
                     }
@@ -53,12 +73,13 @@ public class connectFour {
                     if (gb.connectFourBoard[row][(playerChoice - 1)] == 0) {
                     }
                 }
+
                 horizontalChecker();
 
             }
             if (playerTurn == 2) {
                 for (int row = 0; row <= 6; row += 1) {
-                    if (gb.connectFourBoard[0][playerChoice-1] == 1 || gb.connectFourBoard[0][playerChoice-1] == 2){
+                    if (gb.connectFourBoard[0][playerChoice - 1] == 1 || gb.connectFourBoard[0][playerChoice - 1] == 2) {
                         System.out.println("This column is full");
                         break;
                     }
@@ -76,15 +97,13 @@ public class connectFour {
                     if (gb.connectFourBoard[row][(playerChoice - 1)] == 0) {
                     }
                 }
-                horizontalChecker();
+                while (true) {
+                    gameboard.repaint();
+                    horizontalChecker();
+                }
             }
-            gameboard.repaint();
-            // Add pause
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+
+
         }
     }
 
@@ -92,7 +111,7 @@ public class connectFour {
 
         if (playerCounterOne >= 4) {
             System.out.println("player one wins");
-            System.out.println(Arrays.toString(gameboard.connectFourBoard));
+            System.out.println(Arrays.deepToString(gameboard.connectFourBoard));
             System.exit(0);
         }
         if (playerCounterTwo >= 4) {
@@ -181,7 +200,7 @@ public class connectFour {
 
     public static void diagonalCheckerBottomToTop() {
         for (int y = 0; y != 3; y++) {
-            for (int x = 6; x != 2; x -=1) {
+            for (int x = 6; x != 2; x -= 1) {
                 System.out.println("Y:" + y + ", " + "X:" + x + " : for diagonalCheckerBottomToTop");
                 if (gb.connectFourBoard[y][x] == 1 && gb.connectFourBoard[y + 1][x - 1] == 1 && gb.connectFourBoard[y + 2][x - 2] == 1 && gb.connectFourBoard[y + 3][x - 3] == 1) {
                     playerCounterOne = 4;
@@ -194,5 +213,8 @@ public class connectFour {
                 }
             }
         }
+        playerInput();
     }
+
+
 }
