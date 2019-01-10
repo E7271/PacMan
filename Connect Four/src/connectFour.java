@@ -101,12 +101,10 @@ public class connectFour {
 
         if (playerCounterOne >= 4) {
             System.out.println("player one wins");
-            System.out.println(Arrays.deepToString(gameboard.connectFourBoard));
             System.exit(0);
         }
         if (playerCounterTwo >= 4) {
             System.out.println("player two wins");
-            System.out.println(Arrays.deepToString(gameboard.connectFourBoard));
             System.exit(0);
         }
     }
@@ -116,7 +114,6 @@ public class connectFour {
         int y;
         for (y = 0; y != 6; y++) {
             for (x = 0; x != 7; x++) {
-                System.out.println("Y:" + y + ", " + "X:" + x + " : for Horizontal");
                 //This section checks if player one has won
                 if (gb.connectFourBoard[y][x] == 1) {
                     playerCounterOne += 1;
@@ -142,24 +139,18 @@ public class connectFour {
         int y;
         for (x = 0; x != 7; x++) {
             for (y = 0; y != 6; y++) {
-                System.out.println("Y:" + y + ", " + "X:" + x + " : for Vertical");
                 //This section checks if player one has won
                 if (gb.connectFourBoard[y][x] == 1) {
-                    //System.out.println("player one's tile");
-                    //System.out.println(playerCounterOne);
                     playerCounterOne += 1;
                 } else {
                     playerCounterOne = 0;
                 }
                 //This section checks if player two has won
                 if (gb.connectFourBoard[y][x] == 2) {
-                    //System.out.println("player two's tile");
-                    //System.out.println(playerCounterTwo);
                     playerCounterTwo += 1;
                 } else {
                     playerCounterTwo = 0;
                 }
-                //This just cancels the loop is someone has won
                 if (playerCounterOne >= 4 || playerCounterTwo >= 4) {
                     winnerCheck();
                 }
@@ -171,7 +162,6 @@ public class connectFour {
     public static void diagonalCheckerTopToBottom() {
         for (int y = 0; y != 3; y++) {
             for (int x = 0; x != 4; x++) {
-                System.out.println("Y:" + y + ", " + "X:" + x + " : for diagonalCheckerTopToBottom");
                 if (gb.connectFourBoard[y][x] == 1 && gb.connectFourBoard[y + 1][x + 1] == 1 && gb.connectFourBoard[y + 2][x + 2] == 1 && gb.connectFourBoard[y + 3][x + 3] == 1) {
                     playerCounterOne = 4;
                 }
@@ -189,7 +179,6 @@ public class connectFour {
     public static void diagonalCheckerBottomToTop() {
         for (int y = 0; y != 3; y++) {
             for (int x = 6; x != 2; x -= 1) {
-                System.out.println("Y:" + y + ", " + "X:" + x + " : for diagonalCheckerBottomToTop");
                 if (gb.connectFourBoard[y][x] == 1 && gb.connectFourBoard[y + 1][x - 1] == 1 && gb.connectFourBoard[y + 2][x - 2] == 1 && gb.connectFourBoard[y + 3][x - 3] == 1) {
                     playerCounterOne = 4;
                 }
