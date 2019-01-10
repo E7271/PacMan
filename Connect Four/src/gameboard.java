@@ -16,7 +16,7 @@ public class gameboard extends JPanel {
     public gameboard() {
         setBackground(Color.BLACK);
         setFocusable(true);
-        setPreferredSize(new Dimension(175, 150));
+        setPreferredSize(new Dimension(700, 600));
         setFocusTraversalKeysEnabled(false);
     }
 
@@ -28,38 +28,38 @@ public class gameboard extends JPanel {
                 if (connectFourBoard[row][col] == 0) {
                     g2d.setColor(Color.YELLOW);
                     // Pixel coordinates
-                    int x_coords = 25 * col;
-                    int y_coords = 25 * row;
+                    int x_coords = 100* col;
+                    int y_coords = 100* row;
                     // Block dimensions
-                    int width = 25;
-                    int height = 25;
+                    int width = 100;
+                    int height = 100;
                     g2d.fillRect(x_coords, y_coords, width, height);
                     g2d.setColor(Color.BLACK);
-                    g2d.fillOval(x_coords + 2, y_coords + 2, width - 5, height - 5);
+                    g2d.fillOval(x_coords + 12, y_coords + 12, width - 25, height - 25);
                 }
                 if (connectFourBoard[row][col] == 1) {
                     g2d.setColor(Color.YELLOW);
                     // Pixel coordinates
-                    int x_coords = 25 * col;
-                    int y_coords = 25 * row;
+                    int x_coords = 100* col;
+                    int y_coords = 100* row;
                     // Block dimensions
-                    int width = 25;
-                    int height = 25;
+                    int width = 100;
+                    int height = 100;
                     g2d.fillRect(x_coords, y_coords, width, height);
                     g2d.setColor(Color.BLUE);
-                    g2d.fillOval(x_coords + 2, y_coords + 2, width - 5, height - 5);
+                    g2d.fillOval(x_coords + 12, y_coords + 12, width - 25, height - 25);
                 }
                 if (connectFourBoard[row][col] == 2) {
                     g2d.setColor(Color.YELLOW);
                     // Pixel coordinates
-                    int x_coords = 25 * col;
-                    int y_coords = 25 * row;
+                    int x_coords = 100* col;
+                    int y_coords = 100* row;
                     // Block dimensions
-                    int width = 25;
-                    int height = 25;
+                    int width = 100;
+                    int height = 100;
                     g2d.fillRect(x_coords, y_coords, width, height);
                     g2d.setColor(Color.RED);
-                    g2d.fillOval(x_coords + 2, y_coords + 2, width - 5, height - 5);
+                    g2d.fillOval(x_coords + 12, y_coords + 12, width - 25, height - 25);
                 }
             }
         }
